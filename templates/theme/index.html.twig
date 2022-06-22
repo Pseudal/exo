@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+ 
+{% endblock %}
+{% block title %}Liste des thèmes{% endblock %}
+
+{% block body %}
+{% include '_menu.html.twig' %}
+    <h1>Theme index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for theme in themes %}
+            <tr>
+                <td>{{ theme.id }}</td>
+                <td>{{ theme.name }}</td>
+                <td>
+                    <a href="{{ path('app_theme_show', {'id': theme.id}) }}">Afficher</a>
+                    <a href="{{ path('app_theme_edit', {'id': theme.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_theme_new') }}">Ajouter</a>
+{% endblock %}

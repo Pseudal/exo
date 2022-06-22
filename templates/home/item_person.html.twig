@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+   {{  parent() }} 
+{% endblock %}
+{% block title %}Donnees de personne{% endblock %}
+    {% block body %}
+    <div class="container">
+        <h1>Données de personne N° {{ person_data.id}}</h1>
+          <div class="card" style="width:18rem;">
+            <img src="{{ asset('images/'~person_data.image )}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ person_data.name}} - {{person_data.lastname}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted ">Age: {{person_data.age}}</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            
+            <p><a href="{{path('app_person')}}">Accueil</a></p>
+            </div>
+          </div>
+        </table>
+    </div>
+    {% endblock %}
+    

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+ 
+{% endblock %}
+{% block title %}Donnees de personne{% endblock %}
+    {% block body %}
+    <div class="container">
+        {% include 'home/banner.html.twig' %}
+        <h1>Liste des personnes</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Age</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for person in personnes  %}
+                
+                <tr>
+                    <td>{{ person.id }}</td>
+                    <td>{{ person.name|capitalize }}</td>
+                    <td>{{ person.lastname|upper }}</td>
+                    <td>{{ person.age }}</td>
+                    <td><img src="images/{{ asset(person.image) }}" width="60"/></td> 
+                    {# <td><img src="{{ asset('images/'~person.image) }}"  class="rounded" width="60"/></td> #}
+                    {# <td><a href="/item/{{ person.id }}">Afiicher</a></td> #}
+                    <td><a href="{{ path('person_item', {id:person.id}) }}">Afficher</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+     {% endblock %}

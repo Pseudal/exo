@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+{% endblock %}
+{% block title %}Ajout d'un article{% endblock %}
+{% block body %}
+    {# {{ form(form_post) }} #}
+    {{ form_start(form_post, {'action': path('create_post'), 'method': 'POST'}) }}
+        {# {{ form_widget(form_post) }} #}
+        {# <div class="row">
+            <div class="col">
+                {{form_label(form_post.reference)}}
+                {{form_widget(form_post.reference)}}
+            </div>
+            <div class="col">
+                 {{form_label(form_post.title)}}
+                {{form_widget(form_post.title)}}
+            </div>
+        </div> #}
+        {# {{ form_rest(form_post)}}#} 
+        {{form_row(form_post.reference)}}
+        {{form_row(form_post.title)}}
+        {{form_row(form_post.author)}}
+        {{form_row(form_post.theme)}}
+        {{form_row(form_post.image)}}
+        {{form_row(form_post.content)}}
+    {{ form_end(form_post)}} 
+{% endblock %}
